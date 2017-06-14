@@ -52,6 +52,23 @@ public class ManageSQLServer2008 {
         }
     }
 
+    public String getNews(String type,String className, int num){
+        ResultSet res;
+        String returnStr="";
+        try {
+            res=execSQL("select * from news where class = ?",className);
+            for(int i=0;i<num;i++){
+                if(!res.next()){
+                    return "";
+                }
+            }
+            returnStr=res.getString(type);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return  returnStr;
+    }
+
     public String getInst(String username, int i){
         ResultSet res;
         String str="";
@@ -67,9 +84,53 @@ public class ManageSQLServer2008 {
         return str;
     }
 
+    public int intrLearn(String username, String intr){
+        ResultSet res;
+        int count=0;
+        try {
+            res=execSQL("select "+intr+" from interestlearn where username = ?",username);
+            res.next();
+            count=res.getInt(intr);
+        }catch (SQLException e){
+            System.err.println("加载用户习惯失败");
+            e.printStackTrace();
+            return -1;
+        }
+        return count;
+    }
+
+    public boolean setIntrLearn(String username, String intr){
+        ResultSet res;
+        int count;
+        try {
+            res=execSQL("select "+intr+" from interestlearn where username = ?",username);
+            res.next();
+            count=res.getInt(intr)+1;
+            execSQL("UPDATE interestLearn Set "+intr+"="+count+" where username=?",username);
+        }catch (SQLException e){
+            System.err.println("加载用户习惯失败");
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
     public boolean insertAccount(String username,String password,String email,String name){
         try {
             execSQL("insert into login values(?,?,?,?);",username,password,email,name);
+            execSQL("insert into userinfo values(?,?,?,?,?,?);",username,"2017-6-10","国内","体育","娱乐","科技");
+            execSQL("insert into interestlearn values(?,?,?,?,?  ,?,?,?,?,?);",username,0,0,0,0  ,0,0,0,0,0);
+        } catch (SQLException e) {
+            System.err.println("插入数据出错");
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean changeInterest(String username,int i,String interest){
+        try {
+            execSQL("UPDATE userinfo SET interest"+i+"=? WHERE user_name=? ",interest,username);
         } catch (SQLException e) {
             System.err.println("插入数据出错");
             e.printStackTrace();

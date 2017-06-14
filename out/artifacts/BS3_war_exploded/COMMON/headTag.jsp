@@ -4,22 +4,22 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- bootstarp-css -->
-<link href="STATIC/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/STATIC/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--// bootstarp-css -->
 <!-- css -->
-<link rel="stylesheet" href="STATIC/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="/STATIC/css/style.css" type="text/css" media="all" />
 <!--// css -->
-<script src="STATIC/js/jquery.min.js"></script>
+<script src="/STATIC/js/jquery.min.js"></script>
 <!--fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <!--/fonts-->
 <!-- dropdown -->
-<script src="STATIC/js/jquery.easydropdown.js"></script>
-<link href="STATIC/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
-<script src="STATIC/js/scripts.js" type="text/javascript"></script>
+<script src="/STATIC/js/jquery.easydropdown.js"></script>
+<link href="/STATIC/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
+<script src="/STATIC/js/scripts.js" type="text/javascript"></script>
 <!--js-->
 <!--/js-->
-<script src="STATIC/js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script src="/STATIC/js/easyResponsiveTabs.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#horizontalTab').easyResponsiveTabs({
@@ -30,8 +30,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
 </script>
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="STATIC/js/move-top.js"></script>
-<script type="text/javascript" src="STATIC/js/easing.js"></script>
+<script type="text/javascript" src="/STATIC/js/move-top.js"></script>
+<script type="text/javascript" src="/STATIC/js/easing.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function($) {
         $(".scroll").click(function(event){
@@ -41,7 +41,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
 </script>
 <!-- slider -->
-<script src="STATIC/js/responsiveslides.min.js"></script>
+<script src="/STATIC/js/responsiveslides.min.js"></script>
 <script>
     // You can also use "$(window).load(function() {"
     $(function () {
@@ -51,3 +51,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         });
     });
 </script>
+<%
+    String headFile="";
+    String username=(String) session.getAttribute("username");
+    if(username==null||username.equals("")){
+        headFile="/index.jsp";
+    }else{
+        headFile="/loginHome.jsp";
+    }
+%>

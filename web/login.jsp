@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Duplex a Magazine Category Flat Bootstarp responsive Website Template| Contact :: w3layouts</title><%@include file="COMMON/headTag.jsp"%>
+<title>Duplex a Magazine Category Flat Bootstarp responsive Website Template| Contact :: w3layouts</title>
+	<%@include file="COMMON/headTag.jsp"%>
 </head>
 <body>
 	<div id="home" class="header">
@@ -14,46 +15,18 @@
 <div class="container">
 	<div class="bg-banner">
 		<div class="banner-bottom-bg">
-			<div class="banner-bg"> 
-				
+			<div class="banner-bg">
 					<!-- banner -->
 					<div class="banner">
 						<div class="banner-grids">
-							<div class="banner-top">
-								<span class="menu">MENU</span>
-								<ul class="nav banner-nav">
-									<li class="active"><a href="index.html">首页</a></li>
-									<li class="dropdown1"><a href="culture.html">国内</a>
-									</li>
-									<li class="dropdown1"><a href="lifestyle.html">国际</a>
-									</li>
-									<li class="dropdown1"><a href="archives.html">体育</a>																</li>
-									<li class="dropdown1"><a href="sports.html">娱乐</a>
-									</li>
-									<li class="dropdown1"><a href="travel.html">财经</a>
-									</li>
-									<li class="dropdown1"><a href="celebrity.html">股票</a>
-									</li>
-									<li class="dropdown1"><a href="fullwidth.html">直播 </a>
-									</li>
-									<li class="dropdown1"><a href="404.html">旅游</a>
-									</li>
-									<li class="dropdown1"><a href="contact.html">生活</a></li>
-								</ul>
-								<script>
-									$("span.menu").click(function(){
-										$(" ul.nav").slideToggle("slow" , function(){
-										});
-									});
-								</script>
-							</div>
+							<%@include file="COMMON/navigator.jsp"%>
 							<div class="banner-middle">
 								<div class="login-page">
 									<div class="account_grid">
 										<div class="col-md-6 login-right wow fadeInLeft" data-wow-delay="0.4s">
 											<h3>REGISTERED CUSTOMERS</h3>
 											<p>If you have an account with us, please log in.</p>
-											<form action = "/loginServlet" method="post">
+											<form action = "loginServlet" method="post">
 												<div>
 													<span>Account<label>*</label></span>
 													<input type="text"  name="username" >
@@ -65,7 +38,7 @@
 												<div>
 													<span>Verification Code<label>*</label></span>
 													<input type="text" name = "validationCode">
-													<img class = "validationCode_img" src="/validationCode">
+													<img class = "validationCode_img" src="validationCode">
 													<a class="forgot" href="#">Forgot Your Password?</a>
 												</div>
 												<input type="submit" value="Login">
@@ -74,7 +47,7 @@
 									   <div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
 											<h3>JOIN　US</h3>
 											<p>You can sign up for free.</p>
-											<form action="/registerServlet" method="post">
+											<form action="registerServlet" method="post">
 												<div>
 													<span>Account<label>*Must be more than 6 characters</label></span>
 													<input type="text" name="regUsername">

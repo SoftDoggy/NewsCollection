@@ -2,6 +2,7 @@ package com.eiffai.bean;
 
 import com.eiffai.bean.DBManager.ManageSQLServer2008;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +33,7 @@ public class registerServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		doPost(request,response);
 	}
 
 	/**
@@ -96,6 +97,7 @@ public class registerServlet extends HttpServlet {
             response.getWriter().write("判断唯一出错");
             return;
         }
+        //插入这个用户的账号密码，并且兴趣模块默认为国内，体育，娱乐，科技
         if(mss.insertAccount(username,password,email,name)) {
             //UserDao u = new UserDao();
             //u.addUser(username,password);//调用addUser（）方法
@@ -106,7 +108,9 @@ public class registerServlet extends HttpServlet {
         else{
             response.getWriter().write("数据库插入出错");
         }
-
+        //转发到loginHome.jsp
+        RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+        rd.forward(request, response);
 	}
 
 }

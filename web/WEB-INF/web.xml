@@ -19,6 +19,7 @@
         <url-pattern>/loginServlet</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>logoutServlet</servlet-name>
         <servlet-class>com.eiffai.bean.logoutServlet</servlet-class>
@@ -28,6 +29,7 @@
         <url-pattern>/logoutServlet</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>validationCode</servlet-name>
         <servlet-class>com.eiffai.bean.ValidationCode</servlet-class>
@@ -36,6 +38,7 @@
         <servlet-name>validationCode</servlet-name>
         <url-pattern>/validationCode</url-pattern>
     </servlet-mapping>
+
 
     <servlet>
         <servlet-name>registerServlet</servlet-name>
@@ -47,7 +50,46 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>SetInterestServlet</servlet-name>
+        <servlet-class>com.eiffai.bean.SetInterestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SetInterestServlet</servlet-name>
+        <url-pattern>/SetInterestServlet</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LearnServlet</servlet-name>
+        <servlet-class>com.eiffai.bean.LearnServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LearnServlet</servlet-name>
+        <url-pattern>/LearnServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--设置错误页面-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+
+    <!--访问限制-->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>JSPs</web-resource-name>
+            <url-pattern>/COMMON/*</url-pattern><!-- 拒绝直接访问web文件夹下的所有页面 -->
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
